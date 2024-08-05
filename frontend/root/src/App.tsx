@@ -7,10 +7,16 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const envVariable = import.meta.env
   return (
     <>
       <div>
+        <div>
+          <h1>VITE_PUBLIC_VARIABLE: {envVariable.VITE_PUBLIC_VARIABLE} </h1>
+          <h1>PUBLIC_VARIABLE: {envVariable.PUBLIC_VARIABLE} </h1>
+          <h1>VITE_SECRET_VARIABLE: {envVariable.VITE_SECRET_VARIABLE} </h1>
+          <h1>SECRET_VARIABLE: {envVariable.SECRET_VARIABLE} </h1>
+        </div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
