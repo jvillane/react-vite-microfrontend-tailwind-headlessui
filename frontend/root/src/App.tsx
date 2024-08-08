@@ -7,14 +7,26 @@ import React from "react";
 import router from "./router";
 const envVariable = import.meta.env
 
+console.log(envVariable)
+
 Amplify.configure({
   Auth:{
     Cognito:{
       userPoolId: envVariable.VITE_USER_POOL_ID,
       userPoolClientId: envVariable.VITE_USER_POOL_CLIENT_ID,
-      identityPoolId: envVariable.VITE_USER_POOL_ID,
-      signUpVerificationMethod:"code"
-    }
+      signUpVerificationMethod:"code",
+      loginWith: {
+        oauth:{
+          redirectSignIn: [envVariable.VITE_REDIRECT_SIGN_IN],
+          redirectSignOut: [envVariable.VITE_REDIRECT_SIGN_OUT],
+          domain: envVariable.VITE_DOMAIN,
+          scopes: [envVariable.VITE_SCOPES],
+          responseType: "code",
+
+        }
+      }
+    },
+
   }
 })
 
